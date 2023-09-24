@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler
     public Result exceptionHandler(SQLIntegrityConstraintViolationException ex){
-
+        return null;
     }
 
 }
