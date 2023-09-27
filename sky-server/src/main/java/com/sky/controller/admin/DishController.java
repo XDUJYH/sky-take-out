@@ -70,4 +70,12 @@ public class DishController {
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
     }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("起售禁售菜品")
+    public Result startOrStop(@PathVariable Integer status,Long id){
+        log.info("修改菜品起售禁售状态：{}",id);
+        dishService.startOrStop(status,id);
+        return Result.success();
+    }
 }
