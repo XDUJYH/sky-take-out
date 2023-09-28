@@ -16,7 +16,7 @@ public interface DishService {
      * 新增菜品和对应口味
      */
 
-    public void saveWithFlavor(DishDTO dishDTO);
+    void saveWithFlavor(DishDTO dishDTO);
 
     PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
@@ -45,4 +45,6 @@ public interface DishService {
      * @param id
      */
     void startOrStop(Integer status, Long id);
+
+    void getDishByCategoryId(Long categoryId);
 }

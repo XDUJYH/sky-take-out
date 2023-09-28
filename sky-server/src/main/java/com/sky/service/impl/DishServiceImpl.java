@@ -139,4 +139,9 @@ public class DishServiceImpl implements DishService {
                         .build();
         dishMapper.update(dish);
     }
+
+    @Override
+    public void getDishByCategoryId(Long categoryId) {
+        dishMapper.getDishByCategoryId
+    }
 }
