@@ -13,11 +13,9 @@ import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
 import com.sky.mapper.SetmealDishMapper;
 import com.sky.result.PageResult;
-import com.sky.result.Result;
 import com.sky.service.DishService;
 import com.sky.vo.DishVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -141,7 +139,13 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public void getDishByCategoryId(Long categoryId) {
-        dishMapper.getDishByCategoryId
+    public List<Dish> getDishByCategoryId(Long categoryId) {
+//        List<Dish> list =  dishMapper.getDishByCategoryId(categoryId);
+//        return list;
+        Dish dish = Dish.builder()
+                .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
+                .build();
+        return dishMapper.getDishByCategoryId(dish);
     }
 }

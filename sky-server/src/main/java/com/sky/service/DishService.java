@@ -1,12 +1,10 @@
 package com.sky.service;
 
-import com.sky.annotation.AutoFill;
 import com.sky.dto.DishDTO;
 import com.sky.dto.DishPageQueryDTO;
-import com.sky.enumeration.OperationType;
+import com.sky.entity.Dish;
 import com.sky.result.PageResult;
 import com.sky.vo.DishVO;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -46,5 +44,5 @@ public interface DishService {
      */
     void startOrStop(Integer status, Long id);
 
-    void getDishByCategoryId(Long categoryId);
+    List<Dish> getDishByCategoryId(Long categoryId);
 }
