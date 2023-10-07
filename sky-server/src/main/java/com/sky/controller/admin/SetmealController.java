@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/admin/setmeal")
@@ -27,8 +30,9 @@ public class SetmealController {
     //TODO
     @PutMapping
     @ApiOperation("修改套餐")
-    public Result update(@RequestBody SetmealVO setmealVO){
+    public Result update(@RequestBody SetmealDTO setmealDTO){
         log.info("修改套餐");
+        setmealService.updateSetmeal(setmealDTO);
         return Result.success();
     }
 
@@ -57,5 +61,21 @@ public class SetmealController {
         log.info("套餐分页查询，参数为：{}",setmealPageQueryDTO);
         PageResult pageResult = setmealService.pageQuery(setmealPageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("修改套餐状态")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("修改套餐起售或禁售");
+        setmealService.startOrStop(status, id);
+        return Result.success();
+    }
+
+    @DeleteMapping
+    @ApiOperation("批量删除套餐")
+    public Result delete(@RequestParam List<Long> ids){
+        log.info("批量删除套餐");
+        setmealService.delete(ids);
+        return Result.success();
     }
 }
